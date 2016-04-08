@@ -1,0 +1,26 @@
+﻿@using AuthAuthDemo.Web.Models;
+@using GridMvc.Html;
+@model IList<UserViewModel>
+@{
+    ViewBag.Title = "Show Users";
+}
+
+<h2>ShowUsers</h2>
+
+@Html.Grid(Model).Columns(columns =>
+            {
+                columns.Add(user => user.ID).Titled("User ID").SetWidth(5);
+                columns.Add(user => user.FirstName).Titled("First Name").SetWidth(50);
+                columns.Add(user => user.LastName).Titled("Last Name").SetWidth(50);
+                columns.Add(user => user.EmailAddress).Titled("Email Address").SetWidth(50);
+                columns.Add(user => user.Password).Titled("Password").SetWidth(50);
+            }
+)
+
+@section styles {
+    @Styles.Render("~/bundles/Styles/gridmvc")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/Scripts/gridmvc")
+}

@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Check out all the users on this App!</h1>
+    <p class="lead">Click @Html.ActionLink("here", "Register", "Account") to register and add your name!</p>
+    @Html.ActionLink("Show Users »", "ShowUsers", new { }, new { @class = "btn btn-primary btn-lg" })
+</div>
