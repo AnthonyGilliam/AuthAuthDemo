@@ -1,0 +1,22 @@
+#Solution Files
+*.suo
+*.user
+UpgradeLog*
+TestResults/
+_UpgradeReport*/
+Backup/
+
+#Package Files
+packages/
+
+#Build Files
+**/[Bb]in/*
+!**/*.dll
+obj/
+
+#Resharper
+_Resharper*/
+
+#Temp Files
+*.[Tt][Ee][Mm][Pp]
+*~
