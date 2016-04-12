@@ -61,7 +61,7 @@ namespace AuthAuthDemo.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public JsonResult Register(RegisterViewModel model)
+        public ActionResult Register(RegisterViewModel model)
         {
             var errors = new List<string>();
 
@@ -88,12 +88,9 @@ namespace AuthAuthDemo.Web.Controllers
                     _userHelper.UpdateUser(model);
                     return Json(new { success = true });
                 }
-                else
-                {
-                    return Json(new { success = false, errors = new[] { "The Email address provided already exists.  " +
-                        "Please Login or enter a different email address." }});
-                }
 
+                return Json(new { success = false, errors = new[] { "The Email address provided already exists.  " +
+                    "Please Login or enter a different email address." }});
             }
             catch(Exception ex)
             {

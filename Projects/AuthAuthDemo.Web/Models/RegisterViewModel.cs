@@ -16,8 +16,8 @@ namespace AuthAuthDemo.Web.Models
         [MaxLength(50, ErrorMessage = "Sorry, your Last Name must be 50 characters or less")]
         public string LastName { get; set; }
 
-        [EmailAddress]
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
         
         [Required]

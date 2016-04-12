@@ -6,26 +6,29 @@
 
 <h2>Register A User Here</h2>
 <div>
+    @Html.ValidationSummary(true, string.Empty, new { @class = "text-danger" })
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "register_form" }))
     {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary()
         @Html.LabelFor(Login => Login.FirstName)
         @Html.TextBoxFor(Login => Login.FirstName, new { @class = "form-control" })
-        <br />
+        @Html.ValidationMessageFor(Login => Login.FirstName, string.Empty, new { @class = "text-danger" })
+        <br/>
         @Html.LabelFor(Login => Login.LastName)
         @Html.TextBoxFor(Login => Login.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(Login => Login.LastName, string.Empty, new { @class = "text-danger" })
         <br />
         @Html.LabelFor(Login => Login.Email)
         @Html.TextBoxFor(Login => Login.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(Login => Login.Email, string.Empty, new { @class = "text-danger" })
         <br />
         @Html.LabelFor(Login => Login.Password)
         @Html.PasswordFor(Login => Login.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(Login => Login.Password, string.Empty, new { @class = "text-danger" })
         <br />
         <button id="submit" class="btn btn-primary">Create</button>
     }
 </div>
 @section scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/Bundle/Scripts/register")
+@*    @Scripts.Render("~/Bundle/Scripts/register")*@
 }

@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace AuthAuthDemo.Web
 {
@@ -25,6 +24,9 @@ namespace AuthAuthDemo.Web
 
             bundles.Add(new ScriptBundle("~/bundles/Scripts/gridmvc").Include(
                       "~/Scripts/gridmvc.min.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/site").Include(
+                        "~/Scripts/site.js"));
 
             bundles.Add(new ScriptBundle("~/Bundle/Scripts/register").Include(
                         "~/Scripts/register.js"));

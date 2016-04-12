@@ -4,7 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebMatrix.WebData;
+//using WebMatrix.Data;
+//using WebMatrix.WebData;
 
 namespace AuthAuthDemo.Domain
 {
@@ -45,7 +46,7 @@ namespace AuthAuthDemo.Domain
                 .HasRequired(user => user.Membership)
                 .WithOptional();
 
-//            WebSecurity.InitializeDatabaseConnection("UserContext", "UserProfile", "UserId", "Username", true);
+            WebMatrix.WebData.WebSecurity.InitializeDatabaseConnection("UserContext", "UserProfile", "UserId", "Username", true);
         }
     }
 }
