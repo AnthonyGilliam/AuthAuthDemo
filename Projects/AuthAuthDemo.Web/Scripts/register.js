@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    $('#register_form').validate({
+    $('#registerForm').validate({
         debug: true,
         submitHandler: function(form) {
             $.post('/Account/Register', $(form).serialize())

@@ -22,21 +22,24 @@ namespace AuthAuthDemo.Web
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/Scripts/gridmvc").Include(
+            bundles.Add(new ScriptBundle("~/bundles/gridmvc").Include(
                       "~/Scripts/gridmvc.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                         "~/Scripts/site.js"));
 
-            bundles.Add(new ScriptBundle("~/Bundle/Scripts/register").Include(
+            bundles.Add(new ScriptBundle("~/bundles/register").Include(
                         "~/Scripts/register.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/bundles/Styles/site").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/bundles/Styles/gridmvc").Include(
                       "~/Content/Gridmvc.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/Styles/register").Include(
+                      "~/Content/register.css"));
         }
     }
 }
