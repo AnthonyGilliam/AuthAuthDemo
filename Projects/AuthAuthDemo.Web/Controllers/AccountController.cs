@@ -76,28 +76,22 @@ namespace AuthAuthDemo.Web.Controllers
                         return errs;
                     });
 
-                return Json(new { success = false, errors = errors });
+                return PartialView("_RegisterForm", model);
             }
-            try
-            {
-                //TODO: Get rid of this WebMatrix shit and put in a real membership provider that actually works when you set it up.
-                if (!WebSecurity.UserExists(model.Email))
-                {
-                    WebSecurity.CreateUserAndAccount(model.Email, model.Password);
-                    WebSecurity.Login(model.Email, model.Password, true);
-                    _userHelper.UpdateUser(model);
-                    return Json(new { success = true });
-                }
+            //TODO: Get rid of this WebMatrix shit and put in a real membership provider that actually works when you set it up.
+//            if (!WebSecurity.UserExists(model.Email))
+//            {
+//                WebSecurity.CreateUserAndAccount(model.Email, model.Password);
+//                WebSecurity.Login(model.Email, model.Password, true);
+//                _userHelper.UpdateUser(model);
+//                return Json(new { success = true });
+//            }
+//
+//            return Json(new { success = false, errors = new[] { "The Email address provided already exists.  " +
+//                "Please Login or enter a different email address." }});
 
-                return Json(new { success = false, errors = new[] { "The Email address provided already exists.  " +
-                    "Please Login or enter a different email address." }});
-            }
-            catch(Exception ex)
-            {
-                 return Json(new { success = false, errors = new[] { "Sorry, but this Email address and Password cannot be registered at this time.  " + 
-                    "Please try again later."}});
-            }
-        }
+            return RedirectToAction("ShowUsers", "Home");
+    }
 
         [HttpGet]
         public ActionResult Logout()

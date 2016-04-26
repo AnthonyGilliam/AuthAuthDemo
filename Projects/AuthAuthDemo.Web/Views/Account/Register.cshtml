@@ -1,41 +1,11 @@
-﻿@using AuthAuthDemo.Web.Models
-@model RegisterViewModel
+﻿@model AuthAuthDemo.Web.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
 
 <h2>Register A User Here</h2>
 <div id="registerContainer" class="container">
-    @Html.ValidationSummary(true, string.Empty, new {@class = "text-danger"})
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new {id = "registerForm"}))
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-group">
-            @Html.LabelFor(Login => Login.FirstName)
-            @Html.TextBoxFor(Login => Login.FirstName, new {@class = "form-control"})
-            <i data-fv-icon-for="FirstName" class="form-control-feedback" style="display: none;"></i>
-            @Html.ValidationMessageFor(Login => Login.FirstName, string.Empty, new {@class = "text-danger"})
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(Login => Login.LastName)
-            @Html.TextBoxFor(Login => Login.LastName, new {@class = "form-control"})
-            <i data-fv-icon-for="LastName" class="form-control-feedback" style="display: none;"></i>
-            @Html.ValidationMessageFor(Login => Login.LastName, string.Empty, new {@class = "text-danger"})
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(Login => Login.Email)
-            @Html.TextBoxFor(Login => Login.Email, new {@class = "form-control"})
-            <i data-fv-icon-for="Email" class="form-control-feedback" style="display: none;"></i>
-            @Html.ValidationMessageFor(Login => Login.Email, string.Empty, new { @class = "text-danger" })
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(Login => Login.Password)
-            @Html.PasswordFor(Login => Login.Password, new {@class = "form-control"})
-            <i data-fv-icon-for="Password" class="form-control-feedback" style="display: none;"></i>
-            @Html.ValidationMessageFor(Login => Login.Password, string.Empty, new {@class = "text-danger"})
-        </div>
-        <button id="submit" class="btn btn-primary">Create</button>
-    }
+    @Html.Partial("_RegisterForm", Model)
 </div>
 
 @section styles
