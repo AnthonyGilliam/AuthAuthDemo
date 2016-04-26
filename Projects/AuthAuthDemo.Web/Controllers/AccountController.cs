@@ -6,16 +6,18 @@ using System.Web.Mvc;
 using WebMatrix.WebData;
 using AuthAuthDemo.Web.Models;
 using AuthAuthDemo.Web.ModelHelpers;
+using AuthAuthDemo.Web.Validators;
 
 namespace AuthAuthDemo.Web.Controllers
 {
     public class AccountController : Controller
     {
-        private UserModelHelper _userHelper;
-
+        private readonly UserModelHelper _userHelper;
+        private readonly IAccountValidator _accountValidator;
         public AccountController()
         {
             _userHelper = new UserModelHelper();
+            _accountValidator = new AccountValidator();
         }
 
         [HttpGet]
@@ -63,22 +65,12 @@ namespace AuthAuthDemo.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterViewModel model)
         {
-            var errors = new List<string>();
-
-            if (!ModelState.IsValid)
+            try
             {
-                errors = ModelState.Values
-                    .Aggregate(new List<string>(), (errs, value) =>
-                    {
-                        errs.AddRange(value.Errors
-                            .Aggregate(new List<string>(), (messages, msg) => { messages.Add(msg.ErrorMessage); return messages; }));
-                        
-                        return errs;
-                    });
+                if(!_accountValidator.Validate(ModelState, model))
+                    return PartialView("_RegisterForm", model);
 
-                return PartialView("_RegisterForm", model);
-            }
-            //TODO: Get rid of this WebMatrix shit and put in a real membership provider that actually works when you set it up.
+                //TODO: Get rid of this WebMatrix shit and put in a real membership provider that actually works when you set it up.
 //            if (!WebSecurity.UserExists(model.Email))
 //            {
 //                WebSecurity.CreateUserAndAccount(model.Email, model.Password);
@@ -86,12 +78,15 @@ namespace AuthAuthDemo.Web.Controllers
 //                _userHelper.UpdateUser(model);
 //                return Json(new { success = true });
 //            }
-//
-//            return Json(new { success = false, errors = new[] { "The Email address provided already exists.  " +
-//                "Please Login or enter a different email address." }});
+            }
+            catch (Exception ex)
+            {
+                //TODO: Add logging here
+                ModelState.AddModelError(string.Empty, "Sorry, we cannot register you at this time.  Please try again later.");
+            }
 
-            return RedirectToAction("ShowUsers", "Home");
-    }
+            return PartialView("_RegisterForm", model);
+        }
 
         [HttpGet]
         public ActionResult Logout()

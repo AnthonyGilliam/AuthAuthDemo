@@ -3,7 +3,9 @@
 @{
     var ajaxOptions = new AjaxOptions()
     {
-        UpdateTargetId = "registerContainer"
+        UpdateTargetId = "registerContainer",
+        OnSuccess = "register.onSuccess",
+        OnFailure = "register.onFailure"
     };
 }
 
