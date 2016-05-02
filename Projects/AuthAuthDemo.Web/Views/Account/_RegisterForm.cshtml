@@ -15,28 +15,38 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
-        @Html.LabelFor(Login => Login.FirstName)
-        @Html.TextBoxFor(Login => Login.FirstName, new { @class = "form-control" })
+        @Html.LabelFor(login => login.FirstName)
+        @Html.TextBoxFor(login => login.FirstName, new { @class = "form-control" })
         <i data-fv-icon-for="FirstName" class="form-control-feedback" style="display: none;"></i>
-        @Html.ValidationMessageFor(Login => Login.FirstName, string.Empty, new { @class = "text-danger" })
+        @Html.ValidationMessageFor(login => login.FirstName, string.Empty, new { @class = "text-danger" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(Login => Login.LastName)
-        @Html.TextBoxFor(Login => Login.LastName, new { @class = "form-control" })
+        @Html.LabelFor(login => login.LastName)
+        @Html.TextBoxFor(login => login.LastName, new { @class = "form-control" })
         <i data-fv-icon-for="LastName" class="form-control-feedback" style="display: none;"></i>
-        @Html.ValidationMessageFor(Login => Login.LastName, string.Empty, new { @class = "text-danger" })
+        @Html.ValidationMessageFor(login => login.LastName, string.Empty, new { @class = "text-danger" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(Login => Login.Email)
-        @Html.TextBoxFor(Login => Login.Email, new { @class = "form-control" })
+        @Html.LabelFor(login => login.Email)
+        @Html.TextBoxFor(login => login.Email, new { @class = "form-control" })
         <i data-fv-icon-for="Email" class="form-control-feedback" style="display: none;"></i>
-        @Html.ValidationMessageFor(Login => Login.Email, string.Empty, new { @class = "text-danger" })
+        @Html.ValidationMessageFor(login => login.Email, string.Empty, new { @class = "text-danger" })
     </div>
     <div class="form-group">
-        @Html.LabelFor(Login => Login.Password)
-        @Html.PasswordFor(Login => Login.Password, new { @class = "form-control" })
+        @Html.LabelFor(login => login.UserName)
+        @Html.TextBoxFor(login => login.UserName, new { @class = "form-control" })
+        <i data-fv-icon-for="UserName" class="form-control-feedback" style="display: none;"></i>
+        @Html.ValidationMessageFor(login => login.UserName, string.Empty, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(login => login.Password)
+        @Html.PasswordFor(login => login.Password, new { @class = "form-control" })
         <i data-fv-icon-for="Password" class="form-control-feedback" style="display: none;"></i>
-        @Html.ValidationMessageFor(Login => Login.Password, string.Empty, new { @class = "text-danger" })
+        @Html.ValidationMessageFor(login => login.Password, string.Empty, new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(login => login.UseEmailAsUserName)
+        @Html.CheckBoxFor(login => login.UseEmailAsUserName, new { @class = "form-control" })
     </div>
     <button id="submit" class="btn btn-primary">Create</button>
 }
